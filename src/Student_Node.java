@@ -1,3 +1,4 @@
+@SuppressWarnings("ALL")
 public class Student_Node{
     private String firstName;
     private String lastName;

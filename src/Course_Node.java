@@ -12,6 +12,7 @@ public class Course_Node {
         return ID;
     }
 
+    @SuppressWarnings("unused")
     public void setID(int ID) {
         this.ID = ID;
     }

@@ -1,3 +1,4 @@
+@SuppressWarnings("ALL")
 public class Student_List {
     Linked_Lists hashset = new Linked_Lists();
     public int hashing(long id) {

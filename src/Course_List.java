@@ -1,3 +1,4 @@
+@SuppressWarnings("ALL")
 public class Course_List {
     Course_Node head;
     Course_Node tail;

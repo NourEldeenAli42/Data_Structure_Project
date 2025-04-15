@@ -1,3 +1,4 @@
+@SuppressWarnings("unused")
 public class Enrollment_Node {
     int Status;
     char grade;
