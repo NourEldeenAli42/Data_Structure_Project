@@ -5,6 +5,15 @@ public class Student_Node{
     private int age;
     private long ID;
     Student_Node next;
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
     Student_Node prev;
     public Student_Node(long ID, Student_Node next, Student_Node prev, String firstName, int age, double GPA) {
         this.ID = ID;
