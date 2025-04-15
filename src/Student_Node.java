@@ -1,7 +1,6 @@
 @SuppressWarnings("ALL")
 public class Student_Node{
     private String firstName;
-    private String lastName;
     private int age;
     private long ID;
     Student_Node next;
@@ -37,12 +36,6 @@ public class Student_Node{
     }
     public void setAge(int age) {
         this.age = age;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
     public String getFirstName() {
         return firstName;
