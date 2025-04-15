@@ -1,3 +1,4 @@
+@SuppressWarnings("ALL")
 public class Linked_Lists {
     public DNode head;
     public DNode tail;
