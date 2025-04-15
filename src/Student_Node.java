@@ -1,7 +1,7 @@
 @SuppressWarnings("ALL")
 public class Student_Node{
     private String firstName;
-    private String secondName;
+    public String secondName;
     private int age;
     private long ID;
     Student_Node next;
