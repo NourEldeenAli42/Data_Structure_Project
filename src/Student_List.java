@@ -1,5 +1,3 @@
-package Students;
-
 public class Student_List {
     public int hashing(long id) {
         return (int)((id * 2654435761L) % 1000); // Knuth's multiplicative hash
@@ -26,6 +24,7 @@ public class Student_List {
             int counter = 0;
             for (Student_Node node = head; node != null; node = node.next) {
                 counter++;
+
             }
             return counter;
         }
@@ -49,6 +48,7 @@ public class Student_List {
                     break;
                 } else{
                     push_front(el);
+                    break;
                 }
             }
         } else if (pos<1) {
@@ -68,7 +68,7 @@ public class Student_List {
                 System.out.print(node.getFirstName());
                 break;
             }
-            System.out.print(node.getFirstName() + "," + hashing(node.getID())+" , ");
+            System.out.print(node.getFirstName() +" , ");
         }
         System.out.print("]");
     }
@@ -83,11 +83,13 @@ public class Student_List {
         }
     }
     public Student_Node search(long el) {
-        int pos = hashing(el);
         Student_Node temp = this.head;
-        for (int i=0 ; i < pos ; i++) {
+        for (int i=0 ; i < size() ; i++) {
+            if (temp.getID()==el) {
+                return temp;
+            }
             temp=temp.next;
         }
-        return temp;
+        return null;
     }
 }

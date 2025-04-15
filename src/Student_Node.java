@@ -1,5 +1,3 @@
-package Students;
-
 public class Student_Node{
     private String firstName;
     private String lastName;
@@ -49,6 +47,7 @@ public class Student_Node{
     private double GPA;
     Student_Node next;
     Student_Node prev;
+    public Enrollment_Node first_course;
     public Student_Node(long ID) {
         this.ID=ID;
     }
@@ -56,5 +55,23 @@ public class Student_Node{
         this.ID=ID;
         this.next = next;
         this.prev = prev;
+    }
+    public void enroll(long id,Course_List course) {
+        if(this.first_course == null){
+            this.first_course=new Enrollment_Node();
+            course.search(id).first_student=this.first_course;
+        } else{
+            Enrollment_Node temp=this.first_course;
+            while(temp.next_course != null){
+                temp=temp.next_course;
+            }
+            temp.next_course=new Enrollment_Node();
+            temp=temp.next_course;
+            Enrollment_Node temp2=course.search(id).first_student;
+            while(temp2.next_student!=null){
+                temp2=temp2.next_student;
+            }
+            temp2.next_student=temp;
+        }
     }
 }
