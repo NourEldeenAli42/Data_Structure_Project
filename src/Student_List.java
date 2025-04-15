@@ -37,6 +37,13 @@ public class Student_List {
         }
         temp.next= new Student_Node(el,temp.next,temp);
     }
+    public void insert_at(int pos,long el,String name,int age,double GPA) {
+        Student_Node temp = this.head;
+        for(int i = 0 ; i < pos-1 ; i++){
+            temp=temp.next;
+        }
+        temp.next= new Student_Node(el,temp.next,temp,name,age,GPA);
+    }
     public void addStudent(long ID) {
         int hash = hashing(ID);
         hashset.push_front(hash);
@@ -56,7 +63,7 @@ public class Student_List {
         if (head == null) {
             head = tail = new Student_Node(el,name,age,GPA);
         } else {
-            insert_at(pos,el,name,age,gpa);
+            insert_at(pos,el,name,age,GPA);
         }
     }
     public void display(){
