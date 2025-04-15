@@ -1,4 +1,3 @@
-@SuppressWarnings("ALL")
 public class Student_List {
     Linked_Lists hashset = new Linked_Lists();
     public int hashing(long id) {
@@ -38,32 +37,15 @@ public class Student_List {
         }
         temp.next= new Student_Node(el,temp.next,temp);
     }
-    public void addStudent(long el) {
-        int hash = hashing(el);
+    public void addStudent(long ID) {
+        int hash = hashing(ID);
         hashset.push_front(hash);
         hashset.sort();
         int pos = hashset.binarySearch(hash);
         if (head == null) {
-            head = tail = new Student_Node(el);
-        } else if (pos>this.size()) {
-            Student_Node temp = head;
-            for (int i = 0; i < this.size(); i++) {
-                if (hashing(temp.getID())>pos) {
-                    this.insert_at(i+1,el);
-                    break;
-                } else{
-                    push_front(el);
-                    break;
-                }
-            }
-        } else if (pos<1) {
-            push_front(el);
-        } else {
-            Student_Node temp = this.head;
-            for (int i = 0; i < pos-1; i++) {
-                temp = temp.next;
-            }
-            temp.next = new Student_Node(el,temp.next,temp);
+            head = tail = new Student_Node(ID);
+        } else{
+            insert_at(pos,ID);
         }
     }
     public void addStudent(long el,String name,int age,double GPA) {
@@ -73,25 +55,8 @@ public class Student_List {
         int pos = hashset.binarySearch(hash);
         if (head == null) {
             head = tail = new Student_Node(el,name,age,GPA);
-        } else if (pos>this.size()) {
-            Student_Node temp = head;
-            for (int i = 0; i < this.size(); i++) {
-                if (hashing(temp.getID())>pos) {
-                    this.insert_at(i+1,el);
-                    break;
-                } else{
-                    push_front(el);
-                    break;
-                }
-            }
-        } else if (pos<1) {
-            push_front(el);
         } else {
-            Student_Node temp = this.head;
-            for (int i = 0; i < pos-1; i++) {
-                temp = temp.next;
-            }
-            temp.next = new Student_Node(el,temp.next,temp,name,age,GPA);
+            insert_at(pos,el,name,age,gpa);
         }
     }
     public void display(){
@@ -105,16 +70,7 @@ public class Student_List {
         }
         System.out.print("]");
     }
-    public void change_first(long el,String first_name) {
-        Student_Node temp = this.head;
-        while (temp != null) {
-            if (temp.getID()==el) {
-                temp.setFirstName(first_name);
-                break;
-            }
-            temp = temp.next;
-        }
-    }
+    //To be changed to Binary Search
     public Student_Node search(long el) {
         Student_Node temp = this.head;
         for (int i=0 ; i < size() ; i++) {

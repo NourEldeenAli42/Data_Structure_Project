@@ -1,5 +1,6 @@
-@SuppressWarnings("ALL")
+
 public class Course_List {
+    Linked_Lists hashset = new Linked_Lists();
     Course_Node head;
     Course_Node tail;
     public Course_List(){
@@ -36,28 +37,33 @@ public class Course_List {
         }
         temp.next= new Course_Node(el,temp.next,temp);
     }
-    public void addCourse(int el) {
-        int pos = hashing(el);
+    public void insert_at(int pos,int el,String name) {
+        Course_Node temp = this.head;
+        for(int i = 0 ; i < pos-1 ; i++){
+            temp=temp.next;
+        }
+        temp.next= new Course_Node(el,temp.next,temp,name);
+    }
+    public void addCourse(int ID) {
+        int hash = hashing(ID);
+        hashset.push_front(hash);
+        hashset.sort();
+        int pos = hashset.binarySearch(hash);
         if (head == null) {
-            head = tail = new Course_Node(el);
-        } else if (pos>this.size()) {
-            Course_Node temp = head;
-            for (int i = 0; i < this.size(); i++) {
-                if (hashing(temp.getID())<pos) {
-                    this.insert_at(i+1,el);
-                    break;
-                } else{
-                    push_front(el);
-                }
-            }
-        } else if (pos<1) {
-            push_front(el);
-        } else {
-            Course_Node temp = this.head;
-            for (int i = 0; i < pos-1; i++) {
-                temp = temp.next;
-            }
-            temp.next = new Course_Node(el,temp.next,temp);
+            head = tail = new Course_Node(ID);
+        } else{
+            insert_at(pos,ID);
+        }
+    }
+    public void addCourse(int ID,String name) {
+        int hash = hashing(ID);
+        hashset.push_front(hash);
+        hashset.sort();
+        int pos = hashset.binarySearch(hash);
+        if (head == null) {
+            head = tail = new Course_Node(ID,name);
+        } else{
+            insert_at(pos,ID,name);
         }
     }
     public void display(){
@@ -71,16 +77,7 @@ public class Course_List {
         }
         System.out.print("]");
     }
-    public void change_name(int el,String first_name) {
-        Course_Node temp = this.head;
-        while (temp != null) {
-            if (temp.getID()==el) {
-                temp.setName(first_name);
-                break;
-            }
-            temp = temp.next;
-        }
-    }
+    //Binary Search to be implemented
     public Course_Node search(long el) {
         Course_Node temp = this.head;
         for (int i=0 ; i < size(); i++) {

@@ -2,10 +2,10 @@
 public class Enrollment_Node {
     int Status;
     char grade;
-    Enrollment_Node next_student;
-    Enrollment_Node next_course;
     Student_Node student;
     Course_Node course;
+    Enrollment_Node next_student;
+    Enrollment_Node next_course;
     public Enrollment_Node(){
         this.Status=0;
         this.grade=' ';

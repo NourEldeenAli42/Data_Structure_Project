@@ -8,28 +8,36 @@ public class Course_Node {
         this.ID = ID;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    @SuppressWarnings("unused")
-    public void setID(int ID) {
+    public Course_Node(int ID, Course_Node next, Course_Node prev, String name) {
         this.ID = ID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+        this.next = next;
+        this.prev = prev;
         this.name = name;
     }
 
+    public Course_Node(int ID, String name) {
+        this.ID = ID;
+        this.name = name;
+    }
+
+    public int getID() {
+        return ID;
+    }
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
     public Course_Node(int ID, Course_Node next, Course_Node prev) {
         this.ID = ID;
         this.next = next;
         this.prev = prev;
     }
+    //Put condition to display only active students
     public void display_students() {
         Enrollment_Node temp = first_student;
         System.out.println("Students Enrolled in " + this.name+":");

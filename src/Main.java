@@ -1,12 +1,9 @@
 public class Main{
     public static void main(String[] args) {
         Course_List Courses = new Course_List();
-        Courses.addCourse(77887);
-        Courses.change_name(77887,"Calculus");
-        Courses.addCourse(77890);
-        Courses.change_name(77890,"Ds");
-        Courses.addCourse(7791);
-        Courses.change_name(7791,"Linear");
+        Courses.addCourse(77887,"Calculus");
+        Courses.addCourse(77890,"Linear Algebra");
+        Courses.addCourse(7791,"Data Structures");
 
         Student_List Students = new Student_List();
 
@@ -34,6 +31,9 @@ public class Main{
         Students.search (2401247521L).enroll (77887,Courses);
         Students.search (2401247521L).enroll (77890,Courses);
         Students.search (2401247521L).enroll (7791,Courses);
+
+        Students.addStudent(2402402402L,"Mo Waleed",12,5.0);
+        Students.search (2401247521L).enroll (77890,Courses);
 
         Students.search(2401244543L).display_courses();
         Courses.search(7791).display_students();

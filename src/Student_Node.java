@@ -3,6 +3,7 @@ public class Student_Node{
     private String firstName;
     private int age;
     private long ID;
+    private double GPA;
     Student_Node next;
     Student_Node prev;
     public Student_Node(long ID, Student_Node next, Student_Node prev, String firstName, int age, double GPA) {
@@ -18,6 +19,14 @@ public class Student_Node{
         this.firstName = firstName;
         this.age = age;
         this.GPA = GPA;
+    }
+    public Student_Node(long ID) {
+        this.ID=ID;
+    }
+    public Student_Node(long ID,Student_Node next,Student_Node prev) {
+        this.ID=ID;
+        this.next = next;
+        this.prev = prev;
     }
     public double getGPA() {
         return GPA;
@@ -43,16 +52,8 @@ public class Student_Node{
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    private double GPA;
     public Enrollment_Node first_course;
-    public Student_Node(long ID) {
-        this.ID=ID;
-    }
-    public Student_Node(long ID,Student_Node next,Student_Node prev) {
-        this.ID=ID;
-        this.next = next;
-        this.prev = prev;
-    }
+    //Tail to be added to prevent iterating on whole list of enrollments
     public void enroll(long id,Course_List course) {
         Course_Node req = course.search(id);
         if(this.first_course == null){
@@ -60,7 +61,7 @@ public class Student_Node{
             req.first_student=this.first_course;
             this.first_course.student=this;
             this.first_course.course= req;
-        } else{
+        } else {
             Enrollment_Node temp=this.first_course;
             while(temp.next_course != null){
                 temp=temp.next_course;
