@@ -29,5 +29,14 @@ public class Course_Node {
         this.next = next;
         this.prev = prev;
     }
+    public void display_students() {
+        Enrollment_Node temp = first_student;
+        System.out.println("Students Enrolled in " + this.name+":");
+        while(temp!=null){
+            System.out.println(temp.student.getFirstName());
+            temp=temp.next_student;
+        }
+        System.out.println();
+    }
 
 }

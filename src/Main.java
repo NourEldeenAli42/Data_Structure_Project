@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class Main{
     public static void main(String[] args) {
         Course_List Courses = new Course_List();
@@ -9,14 +11,34 @@ public class Main{
         Courses.change_name(7791,"Linear");
 
         Student_List Students = new Student_List();
-        Students.addStudent(2401244977L);
-        Students.change_first(2401244977L, "Laila Fouad Shawky");
-        Students.addStudent(2401244978L);
-        Students.change_first(2401244978L, "Maro Ahmed Hassan");
-        Students.addStudent(2401244979L);
-        Students.change_first(2401244979L, "Ali Ahmed Fathy");
-        Students.search(2401244977L).enroll(7791,Courses);
-        System.out.println(Courses.search(7791).first_student);
-        System.out.println(Students.search(2401244977L).first_course);
+
+        Students.addStudent(2401244543L,"Nour Eldeen Ali",19,3.9);
+        Students.search (2401244543L).enroll (77887,Courses);
+        Students.search (2401244543L).enroll (77890,Courses);
+        Students.search (2401244543L).enroll (7791,Courses);
+
+        Students.addStudent(2401248710L,"Mahdy",19,4.0);
+        Students.search (2401248710L).enroll (77887,Courses);
+        Students.search (2401248710L).enroll (77890,Courses);
+        Students.search (2401248710L).enroll (7791,Courses);
+
+        Students.addStudent(2401247684L,"Mr. X",19,4.1);
+        Students.search (2401247684L).enroll (77887,Courses);
+        Students.search (2401247684L).enroll (77890,Courses);
+        Students.search (2401247684L).enroll (7791,Courses);
+
+        Students.addStudent(2401248195L,"Maro",19,4.2);
+        Students.search (2401248195L).enroll (77887,Courses);
+        Students.search (2401248195L).enroll (77890,Courses);
+        Students.search (2401248195L).enroll (7791,Courses);
+
+        Students.addStudent(2401247521L,"Mo'men",19,4.3);
+        Students.search (2401247521L).enroll (77887,Courses);
+        Students.search (2401247521L).enroll (77890,Courses);
+        Students.search (2401247521L).enroll (7791,Courses);
+
+        Students.search(2401244543L).display_courses();
+        Courses.search(7791).display_students();
+        Courses.search(77890).display_students();
     }
 }
