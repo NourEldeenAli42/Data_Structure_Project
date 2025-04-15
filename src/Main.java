@@ -17,7 +17,7 @@ public class Main{
         Students.search (2401248710L).enroll (77890,Courses);
         Students.search (2401248710L).enroll (7791,Courses);
 
-        Students.addStudent(2401247684L,"Dezllar",19,4.1);
+        Students.addStudent(2401247684L,"Dezllarr",19,4.1);
         Students.search (2401247684L).enroll (77887,Courses);
         Students.search (2401247684L).enroll (77890,Courses);
         Students.search (2401247684L).enroll (7791,Courses);
