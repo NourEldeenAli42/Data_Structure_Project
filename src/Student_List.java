@@ -2,6 +2,7 @@ public class Student_List {
     //Class Parameters
     public Student_Node head;
     public Student_Node tail;
+    int size;
 
 
     //Class Constructor
@@ -26,6 +27,7 @@ public class Student_List {
             head = head.prev;
             MergeSort();
         }
+        size++;
     }
 
 
@@ -44,9 +46,9 @@ public class Student_List {
 
 
 
-                                            //Searching & Sorting Functions                 Done By: Nour "Eldeen" Ali
+                    //Searching & Sorting Functions                 Done By: Nour "Eldeen" Ali
 
-
+//--------------------------------------Merge Sorting-------------------------------------------//
     //Split the list into two halves
     static Student_Node split(Student_Node head){
         Student_Node fast = head;
@@ -113,7 +115,7 @@ public class Student_List {
         this.head = sort(head);
     }
 
-
+//--------------------------------------Done By: Nour "Eldeen" Ali--------------------------------//
 
     //Related to binary search function "returns middle node between two nodes -start,end-"
     public Student_Node getMiddle(Student_Node start, Student_Node end) {

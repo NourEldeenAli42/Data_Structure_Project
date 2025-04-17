@@ -1,26 +1,13 @@
 public class Course_List {
     Course_Node head;
     Course_Node tail;
-
+    int size;
     //Constructor of the list
     public Course_List(){
         this.head = null;
         this.tail = null;
     }
 
-
-    //Returns number of Courses
-    public int size() {
-        if (head == null) {
-            return 0;
-        } else {
-            int counter = 0;
-            for (Course_Node node = head; node != null; node = node.next) {
-                counter++;
-            }
-            return counter;
-        }
-    }
 
     //Adds new course using ID and Course Name
     public void addCourse(int ID,String name) {
@@ -32,6 +19,7 @@ public class Course_List {
             head = head.prev;
         }
         this.MergeSort ();
+        size++;
     }
 
     //Prints all Available Courses
@@ -50,9 +38,9 @@ public class Course_List {
 
 
 
-                                            //Searching And Sorting Functions           Done By: Nour "Eldeen" Ali
+                //Searching And Sorting Functions           Done By: Nour "Eldeen" Ali
 
-
+//---------------------------------------Merge Sorting-----------------------------------------//
     //Splits the list into two lists
     static Course_Node split(Course_Node head){
         Course_Node fast = head;
@@ -116,6 +104,7 @@ public class Course_List {
         this.head = sort(head);
     }
 
+//----------------------------------Done By: Nour "Eldeen" Ali----------------------------------//
 
     //Binary Search
     public Course_Node binarySearch(long target) {

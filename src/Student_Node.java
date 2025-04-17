@@ -78,6 +78,7 @@ public class Student_Node {
                     temp2 = temp2.next_student;
                 }
                 temp2.next_student = newNode;
+                temp.next_course = newNode;
                 newNode.student = this;
                 newNode.course = req;
                 break;
