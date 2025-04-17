@@ -6,6 +6,7 @@ public class Student_Node{
     private double GPA;
     Student_Node next;
     Student_Node prev;
+    public Enrollment_Node first_course;
     public Student_Node(long ID, Student_Node next, Student_Node prev, String firstName, int age, double GPA) {
         this.ID = ID;
         this.next = next;
@@ -52,16 +53,23 @@ public class Student_Node{
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    public Enrollment_Node first_course;
-    //Tail to be added to prevent iterating on whole list of enrollments
     public void enroll(long id,Course_List course) {
-        Course_Node req = course.search(id);
-        if(this.first_course == null){
+        Course_Node req = course.binarySearch(id);
+        if(this.first_course == null&&req.first_student==null){
             this.first_course=new Enrollment_Node();
             req.first_student=this.first_course;
             this.first_course.student=this;
-            this.first_course.course= req;
-        } else {
+            this.first_course.course=req;
+        } else if(this.first_course == null&&req.first_student!=null) {
+            this.first_course = new Enrollment_Node();
+            Enrollment_Node temp = req.first_student;
+            while(temp.next_student!=null){
+                temp = temp.next_student;
+            }
+            temp.next_student=this.first_course;
+            this.first_course.student=this;
+            this.first_course.course=req;
+        } else{
             Enrollment_Node temp=this.first_course;
             while(temp.next_course != null){
                 temp=temp.next_course;
@@ -71,16 +79,17 @@ public class Student_Node{
             if (req.first_student==null){
                 req.first_student=temp;
             } else{
-            Enrollment_Node temp2=req.first_student;
-            while(temp2.next_student!=null){
-                temp2=temp2.next_student;
-            }
-            temp2.next_student=temp;
+                Enrollment_Node temp2=req.first_student;
+                while(temp2.next_student!=null){
+                    temp2=temp2.next_student;
+                }
+                temp2.next_student=temp;
             }
             temp.student=this;
             temp.course=req;
         }
     }
+
     public void display_courses(){
         Enrollment_Node temp=first_course;
         System.out.println("Courses that " +this.firstName + " has enrolled in: ");
@@ -90,4 +99,5 @@ public class Student_Node{
         }
         System.out.println();
     }
+
 }

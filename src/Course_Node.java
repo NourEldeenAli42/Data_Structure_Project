@@ -1,5 +1,5 @@
 public class Course_Node {
-    private int ID;
+    private long ID;
     private String name;
     public Course_Node next;
     public Course_Node prev;
@@ -20,7 +20,7 @@ public class Course_Node {
         this.name = name;
     }
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
     public void setID(int ID) {
