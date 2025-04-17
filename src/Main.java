@@ -6,12 +6,12 @@ public class Main{
         Courses.addCourse(7791,"Data Structures");
 
         Student_List Students = new Student_List();
-        // hello world!
+
         Students.addStudent(2401244543L,"Nour Eldeen Ali",19,3.9);
         Students.binarySearch (2401244543L).enroll (77887,Courses);
         Students.binarySearch (2401244543L).enroll (77890,Courses);
         Students.binarySearch (2401244543L).enroll (7791,Courses);
-//mm dmkkl,c;lknjkl;;lkjhgfdcvbnm,.,mnbv
+
         Students.addStudent(2401248710L,"Mahdy",19,4.0);
         Students.binarySearch (2401248710L).enroll (77887,Courses);
         Students.binarySearch (2401248710L).enroll (77890,Courses);
