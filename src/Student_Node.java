@@ -1,4 +1,3 @@
-@SuppressWarnings({"t", "ConstantValue"})
 public class Student_Node{
 
     //Class Data Fields
@@ -30,7 +29,7 @@ public class Student_Node{
                 newNode.student=this;
                 newNode.course=req;
         }
-        else if(this.first_course == null&&req.first_student!=null) {
+        else if(this.first_course == null) {
             Enrollment_Node newNode = new Enrollment_Node();
             Enrollment_Node temp = req.first_student;
             while(temp.next_student!=null){
@@ -39,24 +38,20 @@ public class Student_Node{
             temp.next_student=newNode;
             newNode.student=this;
             newNode.course=req;
-        } else{
+        }
+        else{
             Enrollment_Node temp=this.first_course;
             while(temp.next_course != null){
                 temp=temp.next_course;
             }
-            Enrollment_Node newNode=new Enrollment_Node();
-            temp=temp.next_course;
-            if (req.first_student==null){
-                req.first_student=temp;
-            } else{
-                Enrollment_Node temp2=req.first_student;
-                while(temp2.next_student!=null){
-                    temp2=temp2.next_student;
-                }
-                temp2.next_student=temp;
+            Enrollment_Node newNode = new Enrollment_Node();
+            Enrollment_Node temp2 = req.first_student;
+            while(temp2.next_student!=null){
+                temp2=temp2.next_student;
             }
-            temp.student=this;
-            temp.course=req;
+            temp2.next_student=newNode;
+            newNode.student=this;
+            newNode.course=req;
         }
     }
 
