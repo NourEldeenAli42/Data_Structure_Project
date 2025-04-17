@@ -32,7 +32,7 @@ public class Main{
         Students.binarySearch (2401247521L).enroll (77890,Courses);
         Students.binarySearch (2401247521L).enroll (7791,Courses);
 
-        Students.addStudent(2402402402L,"Mo Waleed",12,5.0);
+        Students.addStudent(2402402402L,"Marwan",12,5.0);
         Students.binarySearch (2402402402L).enroll (77890,Courses);
 
         Students.display ();
