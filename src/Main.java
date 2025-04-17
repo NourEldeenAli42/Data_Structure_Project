@@ -4,10 +4,9 @@ public class Main{
         Courses.addCourse(77887,"Calculus");
         Courses.addCourse(77890,"Linear Algebra");
         Courses.addCourse(7791,"Data Structures");
-        //Marwan Test
+
         Student_List Students = new Student_List();
         // hello world!
-        //Mr. Beast
         Students.addStudent(2401244543L,"Nour Eldeen Ali",19,3.9);
         Students.binarySearch (2401244543L).enroll (77887,Courses);
         Students.binarySearch (2401244543L).enroll (77890,Courses);
@@ -33,7 +32,7 @@ public class Main{
         Students.binarySearch (2401247521L).enroll (77890,Courses);
         Students.binarySearch (2401247521L).enroll (7791,Courses);
 
-        Students.addStudent(2402402402L,"Mo Waleed",12,5.0);
+        Students.addStudent(2402402402L,"Marwan",12,5.0);
         Students.binarySearch (2402402402L).enroll (77890,Courses);
 
         Students.display ();
