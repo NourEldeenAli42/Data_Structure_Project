@@ -1,50 +1,52 @@
 public class Student_List {
+    //Class Parameters
     public Student_Node head;
     public Student_Node tail;
+
+
+    //Class Constructor
     public Student_List() {
         head = null;
         tail = null;
     }
-    public void push_front(long el) {
-        if (head == null) {
-            head = tail = new Student_Node(el);
-        } else {
-            head.prev= new Student_Node(el);
-            head.prev.next = head;
-            head = head.prev;
-        }
-    }
-    public void push_front(long el,String name,int age,double GPA) {
-        if (head == null) {
-            head = tail = new Student_Node(el,name,age,GPA);
-        } else {
-            head.prev= new Student_Node(el,name,age,GPA);
-            head.prev.next = head;
-            head = head.prev;
-        }
-    }
+
+
+    //Checks if the Students list is Empty
     public boolean is_Empty() {
         return head == null;
     }
-    public int size() {
-        if (head == null) {
-            return 0;
-        } else {
-            int counter = 0;
-            for (Student_Node node = head; node != null; node = node.next) {
-                counter++;
 
+    //Adds new student to the Students List
+    public void addStudent(long ID,String firstName,int age,double GPA) {             // GPA will be used to be calculated depending on Student grade in each course
+        if (is_Empty ()){
+            head = tail = new Student_Node(ID,firstName,age,GPA);
+        } else{
+            head.prev= new Student_Node(ID,firstName,age,GPA);
+            head.prev.next = head;
+            head = head.prev;
+            MergeSort();
+        }
+    }
+
+
+    //Prints all students names in console
+    public void display(){
+        System.out.print("[");
+        for(Student_Node node = head; node != null; node = node.next) {
+            if(node.next == null) {
+                System.out.print(node.name);
+                break;
             }
-            return counter;
+            System.out.print(node.getFirstName() +" , ");
         }
+        System.out.print("]");
     }
-    public void insert_at(int pos,long el) {
-        Student_Node temp = this.head;
-        for(int i = 0 ; i < pos-1 ; i++){
-            temp=temp.next;
-        }
-        temp.next= new Student_Node(el,temp.next,temp);
-    }
+
+
+
+                                            //Searching & Sorting Functions                 Done By: Nour "Eldeen" Ali
+
+
     //Split the list into two halves
     static Student_Node split(Student_Node head){
         Student_Node fast = head;
@@ -66,6 +68,7 @@ public class Student_List {
         }
         return temp;
     }
+
     //merge the two sorted lists
     static Student_Node merge(Student_Node first, Student_Node second) {
         if (first == null) {
@@ -91,6 +94,8 @@ public class Student_List {
         }
     }
 
+    //Sorts the linked list using Merge Sort Algorithm
+
     public Student_Node sort(Student_Node head) {
         if (head == null||head.next==null) {
             return head;
@@ -101,38 +106,35 @@ public class Student_List {
             return merge(head, second);
         }
     }
+
+
+    //Used to call the sort function directrly from list variable
     public void MergeSort(){
         this.head = sort(head);
     }
-    public void addStudent(long ID) {
-        if (is_Empty ()){
-            push_front(ID);
-        } else{
-            push_front(ID);
-            MergeSort();
+
+
+
+    //Related to binary search function "returns middle node between two nodes -start,end-"
+    public Student_Node getMiddle(Student_Node start, Student_Node end) {
+        if (start == null) return null;
+
+        Student_Node slow = start;
+        Student_Node fast = start.next;
+
+        while (fast != end) {
+            fast = fast.next;
+            if (fast != end) {
+                fast = fast.next;
+                slow = slow.next;
+            }
         }
-    }
-    public void addStudent(long ID,String firstName,int age,double GPA) {
-        if (is_Empty ()){
-            push_front(ID,firstName,age,GPA);
-        } else{
-            push_front(ID,firstName,age,GPA);
-            MergeSort();
-        }
+
+        return slow;
     }
 
-    public void display(){
-        System.out.print("[");
-        for(Student_Node node = head; node != null; node = node.next) {
-            if(node.next == null) {
-                System.out.print(node.getFirstName());
-                break;
-            }
-            System.out.print(node.getFirstName() +" , ");
-        }
-        System.out.print("]");
-    }
-    //To be changed to Binary Search
+
+    //Uses Binary search Algorithm implemented by -Dual Pointer- Method
     public Student_Node binarySearch(long target) {
         Student_Node start = head;
         Student_Node end = null;
@@ -152,21 +154,4 @@ public class Student_List {
         }while (end == null || end.next != start);
         return null;
     }
-    public Student_Node getMiddle(Student_Node start, Student_Node end) {
-        if (start == null) return null;
-
-        Student_Node slow = start;
-        Student_Node fast = start.next;
-
-        while (fast != end) {
-            fast = fast.next;
-            if (fast != end) {
-                fast = fast.next;
-                slow = slow.next;
-            }
-        }
-
-        return slow;
-    }
-
 }

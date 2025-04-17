@@ -1,80 +1,50 @@
-@SuppressWarnings("ALL")
+@SuppressWarnings({"t", "ConstantValue"})
 public class Student_Node{
-    private String firstName;
-    private int age;
-    private long ID;
-    private double GPA;
+
+    //Class Data Fields
+    public String name;
+    public int age;
+    public long ID;
+    public double GPA;
     Student_Node next;
     Student_Node prev;
     public Enrollment_Node first_course;
-    public Student_Node(long ID, Student_Node next, Student_Node prev, String firstName, int age, double GPA) {
-        this.ID = ID;
-        this.next = next;
-        this.prev = prev;
-        this.firstName = firstName;
-        this.age = age;
-        this.GPA = GPA;
-    }
+
+    //Class Constructor
     public Student_Node(long ID, String firstName, int age, double GPA) {
         this.ID = ID;
-        this.firstName = firstName;
+        name = firstName;
         this.age = age;
         this.GPA = GPA;
     }
-    public Student_Node(long ID) {
-        this.ID=ID;
-    }
-    public Student_Node(long ID,Student_Node next,Student_Node prev) {
-        this.ID=ID;
-        this.next = next;
-        this.prev = prev;
-    }
-    public double getGPA() {
-        return GPA;
-    }
-    public void setGPA(double GPA) {
-        this.GPA = GPA;
-    }
-    public long getID() {
-        return ID;
-    }
-    public void setID(long ID) {
-        this.ID = ID;
-    }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+
+
+
+    //Enrolls the student in a specified course by creating Enrollment_Node
     public void enroll(long id,Course_List course) {
         Course_Node req = course.binarySearch(id);
         if(this.first_course == null&&req.first_student==null){
-            this.first_course=new Enrollment_Node();
-            req.first_student=this.first_course;
-            this.first_course.student=this;
-            this.first_course.course=req;
-        } else if(this.first_course == null&&req.first_student!=null) {
-            this.first_course = new Enrollment_Node();
+            Enrollment_Node newNode = new Enrollment_Node ();
+                this.first_course=newNode;
+                req.first_student=newNode;
+                newNode.student=this;
+                newNode.course=req;
+        }
+        else if(this.first_course == null&&req.first_student!=null) {
+            Enrollment_Node newNode = new Enrollment_Node();
             Enrollment_Node temp = req.first_student;
             while(temp.next_student!=null){
                 temp = temp.next_student;
             }
-            temp.next_student=this.first_course;
-            this.first_course.student=this;
-            this.first_course.course=req;
+            temp.next_student=newNode;
+            newNode.student=this;
+            newNode.course=req;
         } else{
             Enrollment_Node temp=this.first_course;
             while(temp.next_course != null){
                 temp=temp.next_course;
             }
-            temp.next_course=new Enrollment_Node();
+            Enrollment_Node newNode=new Enrollment_Node();
             temp=temp.next_course;
             if (req.first_student==null){
                 req.first_student=temp;
@@ -90,14 +60,17 @@ public class Student_Node{
         }
     }
 
+
+
+    //Prints all courses that this student is enrolled in
     public void display_courses(){
         Enrollment_Node temp=first_course;
-        System.out.println("Courses that " +this.firstName + " has enrolled in: ");
+        System.out.println("Courses that " +this.name + " has enrolled in: ");
         while(temp!=null){
-            System.out.println(temp.course.getName());
+            System.out.println(temp.course.name);
             temp=temp.next_course;
         }
         System.out.println();
-    }
-
+    }                           //Implement:
+                                                                //Display_All_Courses  || Display_Active_Courses
 }

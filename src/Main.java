@@ -5,8 +5,6 @@ public class Main{
         Courses.addCourse(77890,"Linear Algebra");
         Courses.addCourse(7791,"Data Structures");
 
-        System.out.println (Courses.binarySearch (7791).getName ());
-
         Student_List Students = new Student_List();
 
         Students.addStudent(2401244543L,"Nour Eldeen Ali",19,3.9);
@@ -36,6 +34,12 @@ public class Main{
 
         Students.addStudent(2402402402L,"Mo Waleed",12,5.0);
         Students.binarySearch (2402402402L).enroll (77890,Courses);
+
+        Students.display ();
+
+        Students.MergeSort ();
+
+        Students.display ();
 
         Students.binarySearch(2401244543L).display_courses();
         Courses.binarySearch(7791).display_students();
