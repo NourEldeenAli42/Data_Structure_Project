@@ -37,7 +37,7 @@ public class Student_List {
                 System.out.print(node.name);
                 break;
             }
-            System.out.print(node.getFirstName() +" , ");
+            System.out.print(node.name +" , ");
         }
         System.out.print("]");
     }
@@ -77,7 +77,7 @@ public class Student_List {
         if (second == null) {
             return first;
         }
-        if (first.getID () < second.getID ()) {
+        if (first.ID < second.ID) {
             first.next = merge(first.next, second);
             if (first.next != null) {
                 first.next.prev = first;
@@ -144,9 +144,9 @@ public class Student_List {
             if (middle == null) {
                 return null;
             }
-            if (middle.getID () == target) {
+            if (middle.ID == target) {
                 return middle;
-            } else if(middle.getID ()<target) {
+            } else if(middle.ID < target) {
                 start = middle.next;
             } else {
                 end=middle;

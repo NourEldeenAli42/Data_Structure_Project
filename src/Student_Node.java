@@ -22,43 +22,56 @@ public class Student_Node{
     //Enrolls the student in a specified course by creating Enrollment_Node
     public void enroll(long id,Course_List course) {
         Course_Node req = course.binarySearch(id);
-        if(this.first_course == null&&req.first_student==null){
+        if(this.first_course == null){
+            if(req.first_student == null){
             Enrollment_Node newNode = new Enrollment_Node ();
                 this.first_course=newNode;
                 req.first_student=newNode;
                 newNode.student=this;
+                newNode.course=req;}
+            else {
+                Enrollment_Node newNode = new Enrollment_Node();
+                Enrollment_Node temp = req.first_student;
+                while(temp.next_student!=null){
+                    temp = temp.next_student;
+                }
+                temp.next_student=newNode;
+                newNode.student=this;
                 newNode.course=req;
+            }
         }
-        else if(this.first_course == null) {
-            Enrollment_Node newNode = new Enrollment_Node();
-            Enrollment_Node temp = req.first_student;
-            while(temp.next_student!=null){
-                temp = temp.next_student;
+        else {
+            if (req.first_student == null) {
+                Enrollment_Node newNode = new Enrollment_Node ();
+                req.first_student = newNode;
+                Enrollment_Node temp = this.first_course;
+                while (temp.next_course != null) {
+                    temp = temp.next_course;
+                }
+                temp.next_course = newNode;
+                newNode.course = req;
+                newNode.student = this;
+            } else {
+                Enrollment_Node temp = this.first_course;
+                while (temp.next_course != null) {
+                    temp = temp.next_course;
+                }
+                Enrollment_Node newNode = new Enrollment_Node ();
+                Enrollment_Node temp2 = req.first_student;
+                while (temp2.next_student != null) {
+                    temp2 = temp2.next_student;
+                }
+                temp2.next_student = newNode;
+                newNode.student = this;
+                newNode.course = req;
             }
-            temp.next_student=newNode;
-            newNode.student=this;
-            newNode.course=req;
-        }
-        else{
-            Enrollment_Node temp=this.first_course;
-            while(temp.next_course != null){
-                temp=temp.next_course;
-            }
-            Enrollment_Node newNode = new Enrollment_Node();
-            Enrollment_Node temp2 = req.first_student;
-            while(temp2.next_student!=null){
-                temp2=temp2.next_student;
-            }
-            temp2.next_student=newNode;
-            newNode.student=this;
-            newNode.course=req;
         }
     }
 
 
 
     //Prints all courses that this student is enrolled in
-    public void display_courses(){
+    public void display_courses() {
         Enrollment_Node temp=first_course;
         System.out.println("Courses that " +this.name + " has enrolled in: ");
         while(temp!=null){
