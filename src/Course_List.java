@@ -22,6 +22,22 @@ public class Course_List {
         size++;
     }
 
+    
+    public boolean isExist(int ID){
+        Course_Node temp = head;
+        while(temp != null)
+        {
+            if(temp.ID == ID)
+            {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
+    
+
     //Prints all Available Courses
     @SuppressWarnings("unused")
     public void display(){
