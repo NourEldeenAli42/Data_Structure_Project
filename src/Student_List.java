@@ -30,6 +30,20 @@ public class Student_List {
         size++;
     }
 
+    public boolean isExist(long ID){
+        Student_Node temp = head;
+        while(temp != null)
+        {
+            if(temp.ID == ID)
+            {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
+
 
     //Prints all students names in console
     public void display(){

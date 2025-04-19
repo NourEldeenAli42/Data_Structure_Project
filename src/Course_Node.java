@@ -26,4 +26,17 @@ public class Course_Node {
         System.out.println();
     }
 
+
+    public boolean isFullCourse()
+    {
+        int Counter = 0;
+        Enrollment_Node temp = first_student;
+
+        while(temp != null){
+            Counter++;
+            temp = temp.next_student;
+        }
+
+        return (Counter == 30) ? true : false;
+    }
 }

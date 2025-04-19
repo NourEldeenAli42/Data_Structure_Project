@@ -17,6 +17,7 @@ public class Student_Node {
         this.GPA = GPA;
     }
 
+    
 
     //Enrolls the student in a specified course by creating Enrollment_Node
     public void enroll(long id, Course_List course) {
@@ -99,4 +100,18 @@ public class Student_Node {
         System.out.println ();
     }                           //Implement:
     //Display_All_Courses  || Display_Active_Courses
+
+    public boolean isNormalStudent()
+    {
+        int Counter = 0;
+        Enrollment_Node temp = first_course;
+
+        while(temp != null){
+            Counter++;
+            temp = temp.next_course;
+        }
+
+        return (Counter >= 2 && Counter <= 7) ? true : false;
+    }
+
 }
