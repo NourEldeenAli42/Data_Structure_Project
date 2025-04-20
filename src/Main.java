@@ -83,16 +83,16 @@ public class Main{
                     
                     break; 
                 case 3:
-                    
+                    System.out.println ("mohamed waleed");
                     break;
                 case 4:
-                    
+                    System.out.println (159);
                     break;
                 case 5:
-                    
+                    System.out.println (123);
                     break;
                 case 6:
-                    
+                    System.out.println (111);
                     break;
                 case 7:
 
@@ -263,7 +263,7 @@ public class Main{
                     
                     break;
                 case 12:
-                    
+                    System.out.println (1244);
                     break;
                 case 13:
                     if(Courses.is_Empty()){
@@ -281,7 +281,7 @@ public class Main{
                                 System.out.println("\nThe course is completed.");
                             }
                             else{
-                                System.out.println("\nThe course is not copmleted.");
+                                System.out.println("\nThe course is not completed.");
                             }
                         }
                     }
