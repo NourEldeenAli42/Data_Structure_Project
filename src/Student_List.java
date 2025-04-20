@@ -10,8 +10,7 @@ public class Student_List {
         head = null;
         tail = null;
     }
-
-
+ 
     //Checks if the Students list is Empty
     public boolean is_Empty() {
         return head == null;
@@ -30,21 +29,11 @@ public class Student_List {
         size++;
     }
 
+    //Checks if a specified student existed in list
     public boolean isExist(long ID){
-        Student_Node temp = head;
-        while(temp != null)
-        {
-            if(temp.ID == ID)
-            {
-                return true;
-            }
-            temp = temp.next;
-        }
-        return false;
+        return (this.binarySearch(ID)== null) ? false : true;
     }
-
-
-
+ 
     //Prints all students names in console
     public void display(){
         System.out.print("[");
@@ -57,7 +46,6 @@ public class Student_List {
         }
         System.out.print("]");
     }
-
 
 
                     //Searching & Sorting Functions                 Done By: Nour "Eldeen" Ali
@@ -123,7 +111,6 @@ public class Student_List {
         }
     }
 
-
     //Used to call the sort function directrly from list variable
     public void MergeSort(){
         this.head = sort(head);
@@ -148,7 +135,6 @@ public class Student_List {
 
         return slow;
     }
-
 
     //Uses Binary search Algorithm implemented by -Dual Pointer- Method
     public Student_Node binarySearch(long target) {

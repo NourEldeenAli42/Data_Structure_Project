@@ -10,24 +10,23 @@ public class Course_Node {
 
 
     //Class Constructor
-    public Course_Node(int ID, String name) {
+    public Course_Node(long ID, String name) {
         this.ID = ID;
         this.name = name;
     }
-
-
+ 
     //Put condition to display only active students
     public void display_students() {
         Enrollment_Node temp = first_student;
-        System.out.println("Students Enrolled in " + this.name+":");
+        System.out.println("\nStudents Enrolled in " + this.name + " : ");
         while(temp!=null){
             System.out.println(temp.student.name);
             temp=temp.next_student;
         }
         System.out.println();
     }
-
-
+    
+    //Checks if 30 students registered at a specified course;
     public boolean isFullCourse()
     {
         int Counter = 0;

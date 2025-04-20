@@ -6,13 +6,11 @@ public class Main{
         Scanner input = new Scanner(System.in);
 
         Course_List Courses = new Course_List();
-
+    
         Student_List Students = new Student_List();
-
-
+        
         int Choice;
-        long StudentID ;
-        int CourseID;
+        long StudentID, CourseID;
         String StudentName , CourseName;
         int StudentAge;
         double StudentGPA;
@@ -43,56 +41,52 @@ public class Main{
             switch (Choice) {
                 case 1:
 
-                    System.out.println("Enter Student's ID");
+                    System.out.println("Enter Student's ID :");
                     StudentID = input.nextLong();
 
                     if(Students.isExist(StudentID)){
 
-                        System.out.println("\nStudent is already exist.");
+                        System.out.println("\nThe Student is already exist.\n");
                     }
                     else{
                         input.nextLine();
-
-                        System.out.println("Enter Student's Name");
+                        System.out.println("Enter Student's Name : ");
                         StudentName = input.nextLine();
-                        System.out.println("Enter Student's Age");
+                        System.out.println("Enter Student's Age : ");
                         StudentAge = input.nextInt();
-                        System.out.println("Enter Student's GPA");
+                        System.out.println("Enter Student's GPA : ");
                         StudentGPA = input.nextDouble();
 
                         Students.addStudent(StudentID,StudentName,StudentAge,StudentGPA);
 
-                        System.out.println("\nStudent Was Added Successfully");
-
+                        System.out.println("\nThe student Was Added Successfully.\n");
                     }
                     
                     break;
                 case 2:
 
-                System.out.println("Enter Course's ID");
-                CourseID = input.nextInt();
+                    System.out.println("Enter Course's ID : ");
+                    CourseID = input.nextLong();
 
-                if(Courses.isExist(CourseID)){
-
-                    System.out.println("/nCourse is already exist.");
-                }
-                else{
-                    input.nextLine();
-                    System.out.println("Enter Course's Name");
-                    CourseName = input.nextLine();
+                    if(Courses.isExist(CourseID)){
+                        System.out.println("\nThe course is already exist.\n");
+                    }
+                    else{
+                        input.nextLine();
+                        System.out.println("Enter Course's Name : ");
+                        CourseName = input.nextLine();
     
-                    Courses.addCourse(CourseID,CourseName);
+                        Courses.addCourse(CourseID,CourseName);
     
-                    System.out.println("\nCourse Was Added Successfully");
-    
-                }
+                        System.out.println("\nThe course Was Added Successfully.\n");
+                    }
                     
                     break; 
                 case 3:
                     
                     break;
                 case 4:
-
+                    
                     break;
                 case 5:
                     
@@ -101,23 +95,169 @@ public class Main{
                     
                     break;
                 case 7:
-                    
+
+                    if(Students.is_Empty()){
+                        int addOne;
+
+                        System.out.println("\nThere are no Students added yet , do you wanna add Student ? (1 / 0)");
+                        addOne = input.nextInt();
+
+
+                        if(addOne == 1){
+                            
+                            System.out.println("Enter Student's ID :");
+                            StudentID = input.nextLong();
+
+                            if(Students.isExist(StudentID)){
+
+                                System.out.println("\nThe Student is already exist.\n");
+                            }
+                            else{
+                                input.nextLine();
+                                System.out.println("Enter Student's Name : ");
+                                StudentName = input.nextLine();
+                                System.out.println("Enter Student's Age : ");
+                                StudentAge = input.nextInt();
+                                System.out.println("Enter Student's GPA : ");
+                                StudentGPA = input.nextDouble();
+
+                                Students.addStudent(StudentID,StudentName,StudentAge,StudentGPA);
+
+                                System.out.println("\nThe student Was Added Successfully.\n");
+
+                            }
+                        }
+                    }
+
+                    if(!Students.is_Empty()){
+
+                        if(Courses.is_Empty()){
+
+                            int addOne;
+    
+                            System.out.println("\nThere are no Courses added yet , do you wanna add Course ? (1 / 0)");
+                            addOne = input.nextInt();
+    
+                            if(addOne == 1){
+    
+                                System.out.println("Enter Course's ID : ");
+                                CourseID = input.nextLong();
+            
+                                if(Courses.isExist(CourseID)){
+                                    System.out.println("\nThe course is already exist.\n");
+                                }
+                                else{
+                                    input.nextLine();
+                                    System.out.println("Enter Course's Name : ");
+                                    CourseName = input.nextLine();
+                
+                                    Courses.addCourse(CourseID,CourseName);
+                
+                                    System.out.println("\nThe course Was Added Successfully.\n");
+                                }
+                            }
+                        }
+
+                        if(!Courses.is_Empty()){
+
+                            System.out.println("Enter Student's ID To Enroll : ");
+                            StudentID = input.nextLong();
+                            if(!Students.isExist(StudentID)){
+
+                                System.out.println("\nThe Student is not exist.\n");
+                            }else{
+                                System.out.println("Enter Course's ID To Enroll : ");
+                                CourseID = input.nextLong();
+
+                                if(!Courses.isExist(CourseID)){
+                                    System.out.println("\nThe course is not exist.\n");
+                                }else{
+
+                                    if(Students.binarySearch(StudentID).isFullOfCourses()){
+                                        System.out.println("\nThe student registered for the maximum number of courses.\n");
+                                    } else if(Courses.binarySearch(CourseID).isFullCourse()){
+                                        System.out.println("\nThe course has the maximum number of students registered.\n");
+                                    }else{
+                                        Students.binarySearch (StudentID).enroll (CourseID,Courses);
+                
+                                        System.out.println("\nThe course has been successfully enrolled.\n");
+                                    }
+                                }
+                            }
+                        }
+                    }
+            
                     break;
                 case 8:
-                    
+
+                    if(Students.is_Empty())
+                    {
+                        System.out.println("\nThere are no students to remove.\n");
+                    }
+                    else if(Courses.is_Empty())
+                    {
+                        System.out.println("\nThere are no courses to remove.\n");
+                    }
+                    else
+                    {
+                        System.out.println("Enter Student's ID :");
+                        StudentID = input.nextLong();
+                        if(!Students.isExist(StudentID)){
+
+                        System.out.println("\nThe student is not exist.\n");
+
+                    }else{
+
+                        System.out.println("Enter Course's ID : ");
+                        CourseID = input.nextLong();
+                        
+                        if(!Courses.isExist(CourseID)){
+                            System.out.println("\nThe course is not exist.\n");
+                        }else{
+                            Students.binarySearch (StudentID).removeEnrollment(CourseID, Courses);
+                        }
+                    }
+                }
+
                     break;
+                    
                 case 9:
-                    System.out.println("Enter Student's ID");
+                if(Students.is_Empty()){
+
+                    System.out.println("\nThere are no students added yet.\n");
+                }else{
+
+                    System.out.println("Enter Student's ID : ");
                     StudentID = input.nextLong();
 
-                    Students.binarySearch(StudentID).display_courses();
+                    if(!Students.isExist(StudentID)){
+                        System.out.println("\nThe student is not exist.\n");
+                    }else{
+
+                        Students.binarySearch(StudentID).display_courses();
+                    }
+                }
 
                     break;
                 case 10:
-                    System.out.println("Enter Course's ID");
-                    CourseID = input.nextInt();
 
-                    Courses.binarySearch(CourseID).display_students();
+                    if(Courses.is_Empty()){
+
+                        System.out.println("\nThere are no courses added yet.\n");
+                    }else{
+
+                        System.out.println("Enter Course's ID : ");
+                        CourseID = input.nextLong();
+
+                        if(!Courses.isExist(CourseID)){
+
+                            System.out.println("\nThe course is not exist.\n");
+                        }else{
+
+                            Courses.binarySearch(CourseID).display_students();
+                        }
+                    }
+
                     break;
                 case 11:
                     
@@ -126,31 +266,60 @@ public class Main{
                     
                     break;
                 case 13:
-                    System.out.println("Enter Course's ID");
-                    CourseID = input.nextInt();
+                    if(Courses.is_Empty()){
 
-                    if(Courses.binarySearch(CourseID).isFullCourse()){
-                        System.out.println("Course is completed");
-                    }
-                    else{
-                        System.out.println("Course is not copmleted");
+                        System.out.println("\nThere are no courses added yet.\n");
+                    }else{
+
+                        System.out.println("Enter Course's ID : ");
+                        CourseID = input.nextInt();
+
+                        if(!Courses.isExist(CourseID)){
+                            System.out.println("\nThe course is not exist.\n");
+                        }else{
+                            if(Courses.binarySearch(CourseID).isFullCourse()){
+                                System.out.println("\nThe course is completed.");
+                            }
+                            else{
+                                System.out.println("\nThe course is not copmleted.");
+                            }
+                        }
                     }
 
                     break;
                 case 14:
-                    System.out.println("Enter Student's ID");
-                    StudentID = input.nextLong();
 
-                    if(Students.binarySearch(StudentID).isNormalStudent()){
-                        System.out.println("Student is normal student");
-                    }
-                    else {
-                        System.out.println("Student is not a normal student");
+                    if(Students.is_Empty()){
+
+                        System.out.println("\nThere are no students added yet.\n");
+                    }else{
+
+                        System.out.println("Enter Student's ID : ");
+                        StudentID = input.nextLong();
+                        if(!Students.isExist(StudentID)){
+
+                            System.out.println("\nThe student is not exist.\n");
+                        }else{
+
+                            if(Students.binarySearch(StudentID).isNormalStudent()){
+                                System.out.println("\nThe student is normal student.");
+                            }
+                            else {
+                                System.out.println("\nThe student is not a normal student.");
+                            }
+                        }
                     }
 
                     break;
+                case 0:
+
+                    System.out.println("\n\t\t\tExiting The System ;)XD\n");
+
+                    break;
                 default:
-                    throw new AssertionError();
+                    System.out.println("\nWrong Choice , Please Choose a Number Between (0:14)\n");
+
+                    break;
             }
 
         } while(Choice != 0);

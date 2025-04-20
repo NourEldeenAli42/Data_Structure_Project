@@ -8,9 +8,8 @@ public class Course_List {
         this.tail = null;
     }
 
-
     //Adds new course using ID and Course Name
-    public void addCourse(int ID,String name) {
+    public void addCourse(long ID,String name) {
         if (head == null) {
             head = tail = new Course_Node(ID,name);
         } else {
@@ -22,21 +21,15 @@ public class Course_List {
         size++;
     }
 
-    
-    public boolean isExist(int ID){
-        Course_Node temp = head;
-        while(temp != null)
-        {
-            if(temp.ID == ID)
-            {
-                return true;
-            }
-            temp = temp.next;
-        }
-        return false;
+    //Checks if a specified Course existed in list
+    public boolean isExist(long ID){
+        return (this.binarySearch(ID)== null) ? false : true;
     }
 
-    
+    //Checks if the courses list is Empty
+    public boolean is_Empty(){
+        return (head == null);
+    }
 
     //Prints all Available Courses
     @SuppressWarnings("unused")
