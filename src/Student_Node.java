@@ -8,6 +8,7 @@ public class Student_Node {
     Student_Node next;
     Student_Node prev;
     public Enrollment_Node first_course;
+    public Enrollment_Node last_course;
 
     //Class Constructor
     public Student_Node(long ID, String firstName, int age, double GPA) {
@@ -39,7 +40,9 @@ public class Student_Node {
             case 0: {
                 Enrollment_Node newNode = new Enrollment_Node ();
                 this.first_course = newNode;
+                this.last_course = newNode;
                 req.first_student = newNode;
+                req.last_student = newNode;
                 newNode.student = this;
                 newNode.course = req;
                 break;
@@ -47,11 +50,9 @@ public class Student_Node {
             case 1: {
                 Enrollment_Node newNode = new Enrollment_Node ();
                 this.first_course = newNode;
-                Enrollment_Node temp = req.first_student;
-                while (temp.next_student != null) {
-                    temp = temp.next_student;
-                }
-                temp.next_student = newNode;
+                this.last_course = newNode;
+                req.last_student.next_student = newNode;
+                req.last_student=newNode;
                 newNode.student=this;
                 newNode.course=req;
                 break;
@@ -59,27 +60,19 @@ public class Student_Node {
             case 2: {
                 Enrollment_Node newNode = new Enrollment_Node ();
                 req.first_student = newNode;
-                Enrollment_Node temp = this.first_course;
-                while (temp.next_course != null) {
-                    temp = temp.next_course;
-                }
-                temp.next_course = newNode;
+                req.last_student = newNode;
+                this.last_course.next_course = newNode;
+                this.last_course=newNode;
                 newNode.course = req;
                 newNode.student = this;
                 break;
             }
             case 3: {
-                Enrollment_Node temp = this.first_course;
-                while (temp.next_course != null) {
-                    temp = temp.next_course;
-                }
                 Enrollment_Node newNode = new Enrollment_Node ();
-                Enrollment_Node temp2 = req.first_student;
-                while (temp2.next_student != null) {
-                    temp2 = temp2.next_student;
-                }
-                temp2.next_student = newNode;
-                temp.next_course = newNode;
+                req.last_student.next_student = newNode;
+                req.last_student=newNode;
+                this.last_course.next_course = newNode;
+                this.last_course=newNode;
                 newNode.student = this;
                 newNode.course = req;
                 break;

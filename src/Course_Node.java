@@ -6,6 +6,7 @@ public class Course_Node {
     public Course_Node next;
     public Course_Node prev;
     public Enrollment_Node first_student;
+    public Enrollment_Node last_student;
 
 
     //Class Constructor
