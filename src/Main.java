@@ -173,7 +173,9 @@ public class Main{
                                     System.out.println("\nThe course is not exist.\n");
                                 }else{
 
-                                    if(Students.binarySearch(StudentID).isFullOfCourses()){
+                                    if (Students.binarySearch(StudentID).isRegistred(CourseID, Courses)) {
+                                        System.out.println("\nStudent has already enrolled this course.\n");
+                                    }else if(Students.binarySearch(StudentID).isFullOfCourses()){
                                         System.out.println("\nThe student registered for the maximum number of courses.\n");
                                     } else if(Courses.binarySearch(CourseID).isFullCourse()){
                                         System.out.println("\nThe course has the maximum number of students registered.\n");
