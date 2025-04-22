@@ -8,17 +8,6 @@ public class Main{
         Course_List Courses = new Course_List();
     
         Student_List Students = new Student_List();
- HEAD
-
-        // hello world!
-        Students.addStudent(2401244543L,"Nour Eldeen Ali",19,3.9);
-        Students.binarySearch (2401244543L).enroll (77887,Courses);
-        Students.binarySearch (2401244543L).enroll (77890,Courses);
-        Students.binarySearch (2401244543L).enroll (7791,Courses);
-=======
-
-
-=======
         
         int Choice;
         long StudentID, CourseID;
@@ -46,9 +35,6 @@ public class Main{
             System.out.println("14-Is Normal Student ?");
             System.out.println("0-Exit\n");
 
-        Students.addStudent(2402402402L,"Marwan",12,5.0);
-        Students.binarySearch (2402402402L).enroll (77890,Courses);
-======
             Choice = input.nextInt();
             input.nextLine();
 
