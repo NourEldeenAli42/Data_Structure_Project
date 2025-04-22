@@ -14,7 +14,11 @@ public class Main{
         String StudentName , CourseName;
         int StudentAge;
         double StudentGPA;
-
+        
+        StackRedo SR = new StackRedo();
+        StackUndo SU = new StackUndo();
+        SU.SetRedo(SR);
+        SR.SetUndo(SU);
 
         do {
             System.out.println("\n\t\t\tWelcome to University Course Registration !");
@@ -449,7 +453,7 @@ public class Main{
                     break;
                 case 0:
 
-                    System.out.println("\n\t\t\tExiting The System ;)XD\n");
+                    System.out.println("\n\t\t\tExiting The System ;)\n");
 
                     break;
                 default:
