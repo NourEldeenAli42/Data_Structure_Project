@@ -16,8 +16,8 @@ public class Student_List {
         return head == null;
     }
 
-    //Adds new student to the Students List
-    public void addStudent(long ID,String firstName,int age,double GPA) {             // GPA will be used to be calculated depending on Student grade in each course
+    //Adds a new student to the Students List
+    public void addStudent(long ID,String firstName,int age,double GPA) {             // GPA will be used to be calculated depending on the Student grade in each course
         if (is_Empty ()){
             head = tail = new Student_Node(ID,firstName,age,GPA);
         } else{
@@ -29,12 +29,12 @@ public class Student_List {
         size++;
     }
 
-    //Checks if a specified student existed in list
+    //Checks if a specified student existed in a list
     public boolean isExist(long ID){
-        return (this.binarySearch(ID)== null) ? false : true;
+        return this.binarySearch (ID) != null;
     }
  
-    //Prints all students names in console
+    //Prints all student's names in the console
     public void display(){
         System.out.print("[");
         for(Student_Node node = head; node != null; node = node.next) {
@@ -48,7 +48,7 @@ public class Student_List {
     }
 
 
-                    //Searching & Sorting Functions                 Done By: Nour "Eldeen" Ali
+                    //Searching & Sorting Functions Done By: Nour "Eldeen" Ali
 
 //--------------------------------------Merge Sorting-------------------------------------------//
     //Split the list into two halves
@@ -111,16 +111,17 @@ public class Student_List {
         }
     }
 
-    //Used to call the sort function directrly from list variable
+    //Used to call the sort function directly from the list variable
     public void MergeSort(){
         this.head = sort(head);
     }
 
 //--------------------------------------Done By: Nour "Eldeen" Ali--------------------------------//
 
-    //Related to binary search function "returns middle node between two nodes -start,end-"
+    //Related to the binary search function "returns middle node between two nodes -start,end-"
     public Student_Node getMiddle(Student_Node start, Student_Node end) {
         if (start == null) return null;
+        if (start == end) return start;
 
         Student_Node slow = start;
         Student_Node fast = start.next;
@@ -153,6 +154,8 @@ public class Student_List {
             } else {
                 end=middle;
             }
+            if (start == end)
+                return null;
         }while (end == null || end.next != start);
         return null;
     }

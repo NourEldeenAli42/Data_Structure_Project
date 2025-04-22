@@ -37,6 +37,6 @@ public class Course_Node {
             temp = temp.next_student;
         }
 
-        return (Counter == 30) ? true : false;
+        return Counter == 30;
     }
 }
