@@ -1,6 +1,7 @@
 public class Course_List {
     Course_Node head;
     Course_Node tail;
+    Course_Node last_added;
     int size;
     //Constructor of the list
     public Course_List(){
@@ -8,12 +9,14 @@ public class Course_List {
         this.tail = null;
     }
 
-    //Adds new course using ID and Course Name
+    //Adds a new course using ID and Course Name
     public void addCourse(long ID,String name) {
         if (head == null) {
             head = tail = new Course_Node(ID,name);
+            last_added = head;
         } else {
             head.prev= new Course_Node(ID,name);
+            last_added = head.prev;
             head.prev.next = head;
             head = head.prev;
         }
@@ -21,12 +24,32 @@ public class Course_List {
         size++;
     }
 
-    //Checks if a specified Course existed in list
-    public boolean isExist(long ID){
-        return (this.binarySearch(ID)== null) ? false : true;
+
+    //Removes a course from the list
+    public void removeCourse(Course_Node temp) {
+        if (temp == null) {
+            System.out.println("\nThe Course does not exist in the list.");
+        } else {
+            if (temp == head) {
+                head = temp.next;
+            } else if (temp == tail) {
+                tail = temp.prev;
+            } else {
+                temp.next.prev = temp.prev;
+                temp.prev.next = temp.next;
+                size--;
+                System.out.println ("\nThe Course has been successfully deleted.");
+            }
+        }
     }
 
-    //Checks if the courses list is Empty
+
+    //Checks if a specified Course existed in a list
+    public boolean isExist(long ID){
+        return this.binarySearch (ID) != null;
+    }
+
+    //Checks if the course list is Empty
     public boolean is_Empty(){
         return (head == null);
     }
@@ -47,7 +70,7 @@ public class Course_List {
 
 
 
-                //Searching And Sorting Functions           Done By: Nour "Eldeen" Ali
+                //Searching And Sorting Functions Done By: Nour "Eldeen" Ali
 
 //---------------------------------------Merge Sorting-----------------------------------------//
     //Splits the list into two lists
@@ -108,7 +131,7 @@ public class Course_List {
     }
 
 
-    //Function to be called from list directly
+    //Function to be called from a list directly
     public void MergeSort(){
         this.head = sort(head);
     }
@@ -137,7 +160,7 @@ public class Course_List {
     }
 
 
-    //Returns middle Node using Dual Pointers Method
+    //Returns the middle Node using Dual Pointers Method
     public Course_Node getMiddle(Course_Node start, Course_Node end) {
         if (start == null) return null;
 
