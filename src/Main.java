@@ -37,6 +37,8 @@ public class Main{
             System.out.println("12-Sort Courses By ID");
             System.out.println("13-Is Full Course ?");
             System.out.println("14-Is Normal Student ?");
+            System.out.println("15-Undo Last Action");
+            System.out.println("16-Redo Last Action");
             System.out.println("0-Exit\n");
 
             Choice = input.nextInt();
@@ -227,9 +229,7 @@ public class Main{
                                 StudentAge = input.nextInt();
                                 System.out.println("Enter Student's GPA : ");
                                 StudentGPA = input.nextDouble();
-
                                 Students.addStudent(StudentID,StudentName,StudentAge,StudentGPA);
-
                                 System.out.println("\nThe student Was Added Successfully.\n");
 
                             }
@@ -287,7 +287,8 @@ public class Main{
                                     } else if(Courses.binarySearch(CourseID).isFullCourse()){
                                         System.out.println("\nThe course has the maximum number of students registered.\n");
                                     }else{
-                                        Students.binarySearch (StudentID).enroll (CourseID,Courses);
+                                        Students.binarySearch(StudentID).enroll(CourseID,Courses);
+                                        SU.Push(Students.binarySearch(StudentID).last_course);
                 
                                         System.out.println("\nThe course has been successfully enrolled.\n");
                                     }
@@ -451,6 +452,26 @@ public class Main{
                     }
 
                     break;
+                case 15:
+
+                    if(SU.isEmpty()){
+                        System.out.println("\nThere is no undo to do.\n");
+                    }else{
+                        SU.Undo();
+                        System.out.println("\nThe last action was undone.\n");
+                    }
+
+                    break;
+                case 16:
+
+                    if(SR.isEmpty()){
+                        System.out.println("\nThere is no redo to do.\n");
+                    }else{
+                        SR.Redo();
+                        System.out.println("\nThe last action was redone.\n");
+                    }
+
+                    break;
                 case 0:
 
                     System.out.println("\n\t\t\tExiting The System ;)\n");
@@ -461,7 +482,10 @@ public class Main{
 
                     break;
             }
-
+            System.out.println("Undo Stack : ");
+            SU.display();
+            System.out.println("Redo Stack : ");
+            SR.display();
         } while(Choice != 0);
         
     }

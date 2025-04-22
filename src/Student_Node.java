@@ -1,3 +1,5 @@
+
+
 public class Student_Node {
 
     //Class Data Fields
@@ -46,6 +48,7 @@ public class Student_Node {
                 break;
             }
             case 1: {
+                newNode.prev_student = req.last_student;
                 this.first_course = newNode;
                 this.last_course = newNode;
                 req.last_student.next_student = newNode;
@@ -55,6 +58,7 @@ public class Student_Node {
                 break;
             }
             case 2: {
+                newNode.prev_course = this.last_course;
                 req.first_student = newNode;
                 req.last_student = newNode;
                 this.last_course.next_course = newNode;
@@ -64,6 +68,8 @@ public class Student_Node {
                 break;
             }
             case 3: {
+                newNode.prev_course = this.last_course;
+                newNode.prev_student = req.last_student;
                 req.last_student.next_student = newNode;
                 req.last_student=newNode;
                 this.last_course.next_course = newNode;
@@ -73,6 +79,7 @@ public class Student_Node {
                 break;
             }
         }
+        
 
     }
     

@@ -9,6 +9,8 @@ public class Enrollment_Node {
 
     Enrollment_Node next_student;
     Enrollment_Node next_course;
+    Enrollment_Node prev_student;
+    Enrollment_Node prev_course;
 
 
     //Class Constructor
@@ -17,5 +19,7 @@ public class Enrollment_Node {
         this.grade='O';
         this.next_student=null;
         this.next_course=null;
+        this.prev_student=null;
+        this.prev_course=null;
     }
 }
