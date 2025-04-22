@@ -58,7 +58,49 @@ public class Student_List {
         } else {
             insert_at(pos,el,name,age,gpa);
         }
+        //Remove Studen
+        public void removeStudent(int id) {
+            if (head == null) {
+                System.out.println("List is empty.");
+                return;
+            }
+    
+            if (head.id == id) {
+                System.out.println("Student Removed: " + head);
+                head = head.next;
+                if (head == null) {
+                    tail = null; 
+                }
+                return;
+            }
+    
+            Student current = head;
+            while (current.next != null && current.next.id != id) {
+                current = current.next;
+            }
+    
+            if (current.next != null) {
+                System.out.println("Student Removed: " + current.next);
+                current.next = current.next.next;
+                if (current.next == null) {
+                    tail = current; 
+                }
+            } else {
+                System.out.println("Student with ID " + id + " not found.");
+            }
+        }
+    
+        public int getLastStudentAdded() {
+            if (head=tail != null) {
+                System.out.println("Last Student Added: " + tail.info);
+                return tail.info;
+            } else {
+                System.out.println("No students in the list.");
+            }
+        }
     }
+    
+    
     public void display(){
         System.out.print("[");
         for(Student_Node node = head; node != null; node = node.next) {
