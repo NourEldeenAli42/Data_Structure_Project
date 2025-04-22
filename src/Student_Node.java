@@ -34,9 +34,9 @@ public class Student_Node {
             } else
                 var = 3;
         }
+        Enrollment_Node newNode = new Enrollment_Node ();
         switch (var) {
             case 0: {
-                Enrollment_Node newNode = new Enrollment_Node ();
                 this.first_course = newNode;
                 this.last_course = newNode;
                 req.first_student = newNode;
@@ -46,7 +46,6 @@ public class Student_Node {
                 break;
             }
             case 1: {
-                Enrollment_Node newNode = new Enrollment_Node ();
                 this.first_course = newNode;
                 this.last_course = newNode;
                 req.last_student.next_student = newNode;
@@ -56,7 +55,6 @@ public class Student_Node {
                 break;
             }
             case 2: {
-                Enrollment_Node newNode = new Enrollment_Node ();
                 req.first_student = newNode;
                 req.last_student = newNode;
                 this.last_course.next_course = newNode;
@@ -66,7 +64,6 @@ public class Student_Node {
                 break;
             }
             case 3: {
-                Enrollment_Node newNode = new Enrollment_Node ();
                 req.last_student.next_student = newNode;
                 req.last_student=newNode;
                 this.last_course.next_course = newNode;
