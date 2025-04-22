@@ -86,17 +86,120 @@ public class Main{
                     }
                     
                     break; 
-                case 3:
-                    System.out.println ("mohamed waleed");
-                    break;
-                case 4:
-                    System.out.println (159);
-                    break;
+                case 3:{
+                    System.out.println ("Enter the student's ID to remove : ");
+                    StudentID = input.nextLong();
+                    Student_Node temp = Students.binarySearch (StudentID);
+                    if(temp == null){
+                        System.out.println("\nThe student doesn't exist.\n");
+                        break;
+                    } else if(temp.first_course != null){
+                        System.out.println ("The student has registered courses.\n");
+                        System.out.println ("Do you want to remove the student ? (1 / 0) : \n");
+                        System.out.println ("\"This will delete all the enrollments that the student has registered.\"\n");
+                        int remove = input.nextInt();
+                        if(remove == 1){
+                            Enrollment_Node temp1 = temp.first_course;
+                            while(temp1 != null){
+                                Students.binarySearch (StudentID).removeEnrollment(temp1.course.ID, Courses);
+                                temp1 = temp1.next_student;
+                            }
+                            Students.removeStudent (temp);
+                            System.out.println ("The course was removed successfully.\n");
+                        }
+                    }else {
+                        Students.removeStudent (temp);
+                        System.out.println ("The student was removed successfully.\n");
+                    }
+                    break;}
+                case 4:{
+                    System.out.println ("Enter the course's ID to remove: ");
+                    CourseID = input.nextLong();
+                    Course_Node temp = Courses.binarySearch (CourseID);
+                    if(temp == null){
+                        System.out.println("\nThe course doesn't exist.\n");
+                        break;
+                    } else if(temp.first_student != null){
+                        System.out.println ("The course has enrolled students.\n");
+                        System.out.println ("Do you want to remove the course ? (1 / 0) : \n");
+                        System.out.println ("\"This will delete all the enrollments that the course.\"\n");
+                        int remove = input.nextInt();
+                        if(remove == 1){
+                            Enrollment_Node temp1 = temp.first_student;
+                            while(temp1 != null){
+                                Students.binarySearch (temp1.student.ID).removeEnrollment(CourseID, Courses);
+                                temp1 = temp1.next_student;
+                            }
+                            Courses.removeCourse (temp);
+                            System.out.println ("The course was removed successfully.\n");
+                        }
+                    }else {
+                        Courses.removeCourse (temp);
+                        System.out.println ("The student was removed successfully.\n");
+                    }
+                    break;}
                 case 5:
-                    System.out.println (123);
+                    if(Students.is_Empty()){
+                        System.out.println("\nThere are no Students added yet , do you wanna add Student ? (1 / 0)");
+                        int choice = input.nextInt();
+                        if (choice == 1) {System.out.println("Enter Student's ID :");
+                            StudentID = input.nextLong();
+
+                            if(Students.isExist(StudentID)){
+
+                                System.out.println("\nThe Student is already exist.\n");
+                            }
+                            else{
+                                input.nextLine();
+                                System.out.println("Enter Student's Name : ");
+                                StudentName = input.nextLine();
+                                System.out.println("Enter Student's Age : ");
+                                StudentAge = input.nextInt();
+                                System.out.println("Enter Student's GPA : ");
+                                StudentGPA = input.nextDouble();
+
+                                Students.addStudent(StudentID,StudentName,StudentAge,StudentGPA);
+
+                                System.out.println("\nThe student Was Added Successfully.\n");
+                            }
+
+                        }
+                    }
+                    else if (Students.last_added==null){
+                        System.out.println ("The last student added was deleted.\n");
+                        break;
+                    }
+                    System.out.println ("The last student added was: " + Students.last_added.name);
                     break;
                 case 6:
-                    System.out.println (111);
+                    if(Courses.is_Empty()){
+                        System.out.println("\nThere are no Courses added yet , do you wanna add Student ? (1 / 0)");
+                        int choice = input.nextInt();
+                        if (choice == 1) {
+
+                            System.out.println("Enter Course's ID : ");
+                            CourseID = input.nextLong();
+
+                            if(Courses.isExist(CourseID)){
+                                System.out.println("\nThe course is already exist.\n");
+                            }
+                            else{
+                                input.nextLine();
+                                System.out.println("Enter Course's Name : ");
+                                CourseName = input.nextLine();
+
+                                Courses.addCourse(CourseID,CourseName);
+
+                                System.out.println("\nThe course Was Added Successfully.\n");
+                            }
+
+                        }
+                    }
+                    else if (Students.last_added==null){
+                        System.out.println ("The last course added was deleted.\n");
+                        break;
+                    }
+                    System.out.println ("The last course added was: " + Courses.last_added.name);
                     break;
                 case 7:
 
@@ -177,7 +280,7 @@ public class Main{
                                     System.out.println("\nThe course is not exist.\n");
                                 }else{
 
-                                    if (Students.binarySearch(StudentID).isRegistred(CourseID, Courses)) {
+                                    if (Students.binarySearch(StudentID).isRegistered ()red(CourseID, Courses)) {
                                         System.out.println("\nStudent has already enrolled this course.\n");
                                     }else if(Students.binarySearch(StudentID).isFullOfCourses()){
                                         System.out.println("\nThe student registered for the maximum number of courses.\n");
