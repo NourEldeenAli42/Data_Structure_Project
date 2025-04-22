@@ -8,7 +8,7 @@ public class Main{
         Course_List Courses = new Course_List();
     
         Student_List Students = new Student_List();
-        
+
         int Choice;
         long StudentID, CourseID;
         String StudentName , CourseName;
@@ -20,7 +20,7 @@ public class Main{
         SU.SetRedo(SR);
         SR.SetUndo(SU);
 
-        do { 
+        do {
             System.out.println("\n\t\t\tWelcome to University Course Registration !");
             System.out.println("__________________________________________________________________________________________\n");
             System.out.println("1-Add Student");
@@ -177,7 +177,7 @@ public class Main{
                                     System.out.println("\nThe course is not exist.\n");
                                 }else{
 
-                                    if (Students.binarySearch(StudentID).isRegistered(CourseID, Courses)) {
+                                    if (Students.binarySearch(StudentID).isRegistred(CourseID, Courses)) {
                                         System.out.println("\nStudent has already enrolled this course.\n");
                                     }else if(Students.binarySearch(StudentID).isFullOfCourses()){
                                         System.out.println("\nThe student registered for the maximum number of courses.\n");
