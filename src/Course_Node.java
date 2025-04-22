@@ -16,7 +16,7 @@ public class Course_Node {
     }
  
     //Put condition to display only active students
-    public void display_students() {
+    public void displaySortedStudents() {
         Student_List temp = new Student_List();
         Enrollment_Node temp1 = first_student;
         while(temp1 != null){
@@ -24,6 +24,14 @@ public class Course_Node {
             temp1 = temp1.next_student;
         }
         temp.display();
+    }
+
+    public void displayStudents(){
+        Enrollment_Node temp = first_student;
+        while(temp != null){
+            System.out.println(temp.student.name);
+            temp = temp.next_student;
+        }
     }
     
     //Checks if 30 students registered at a specified course;

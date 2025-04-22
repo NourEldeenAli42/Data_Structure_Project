@@ -80,7 +80,7 @@ public class Student_Node {
     }
     
     //Prints all courses that this student is enrolled in
-    public void display_courses() {
+    public void displayCourses() {
             Enrollment_Node temp = first_course;
             System.out.println ("\nCourses that " + this.name + " has enrolled in : ");
             while (temp != null) {

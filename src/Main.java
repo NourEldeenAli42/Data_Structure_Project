@@ -39,7 +39,7 @@ public class Main{
             input.nextLine();
 
             switch (Choice) {
-                case 1:
+                case 1:{
 
                     System.out.println("Enter Student's ID :");
                     StudentID = input.nextLong();
@@ -62,7 +62,7 @@ public class Main{
                         System.out.println("\nThe student Was Added Successfully.\n");
                     }
                     
-                    break;
+                    break;}
                 case 2:
 
                     System.out.println("Enter Course's ID : ");
@@ -134,7 +134,7 @@ public class Main{
                         System.out.println ("The student was removed successfully.\n");
                     }
                     break;}
-                case 5:
+                case 5:{
                     if(Students.is_Empty()){
                         System.out.println("\nThere are no Students added yet , do you wanna add Student ? (1 / 0)");
                         int choice = input.nextInt();
@@ -166,7 +166,7 @@ public class Main{
                         break;
                     }
                     System.out.println ("The last student added was: " + Students.last_added.name);
-                    break;
+                    break;}
                 case 6:
                     if(Courses.is_Empty()){
                         System.out.println("\nThere are no Courses added yet , do you wanna add Student ? (1 / 0)");
@@ -197,7 +197,7 @@ public class Main{
                     }
                     System.out.println ("The last course added was: " + Courses.last_added.name);
                     break;
-                case 7:
+                case 7:{
 
                     if(Students.is_Empty()){
                         int addOne;
@@ -292,8 +292,8 @@ public class Main{
                         }
                     }
             
-                    break;
-                case 8:
+                    break;}
+                case 8:{
 
                     if(Students.is_Empty())
                     {
@@ -324,9 +324,9 @@ public class Main{
                     }
                 }
 
-                    break;
+                    break;}
                     
-                case 9:
+                case 9:{
                 if(Students.is_Empty()){
 
                     System.out.println("\nThere are no students added yet.\n");
@@ -339,12 +339,12 @@ public class Main{
                         System.out.println("\nThe student is not exist.\n");
                     }else{
 
-                        Students.binarySearch(StudentID).display_courses();
+                        Students.binarySearch(StudentID).displayCourses();
                     }
                 }
 
-                    break;
-                case 10:
+                    break;}
+                case 10:{
 
                     if(Courses.is_Empty()){
 
@@ -359,16 +359,47 @@ public class Main{
                             System.out.println("\nThe course is not exist.\n");
                         }else{
 
-                            Courses.binarySearch(CourseID).display_students();
+                            Courses.binarySearch(CourseID).displayStudents();
                         }
                     }
 
-                    break;
-                case 11:
-                    
-                    break;
+                    break;}
+                case 11:{
+                    if(Courses.is_Empty()){
+
+                        System.out.println("\nThere are no courses added yet.\n");
+                    }else{
+
+                        System.out.println("Enter Course's ID : ");
+                        CourseID = input.nextLong();
+
+                        if(!Courses.isExist(CourseID)){
+
+                            System.out.println("\nThe course is not exist.\n");
+                        }else{
+
+                            Courses.binarySearch(CourseID).displaySortedStudents();
+                        }
+                    }
+
+                    break;}
                 case 12:
-                    System.out.println (1244);
+                    if(Students.is_Empty()){
+
+                        System.out.println("\nThere are no students added yet.\n");
+                    }else{
+
+                        System.out.println("Enter student's ID : ");
+                        StudentID = input.nextLong();
+
+                        if(!Courses.isExist(StudentID)){
+
+                            System.out.println("\nThe student doesn't exist.\n");
+                        }else{
+
+                            Students.binarySearch(StudentID).displaySortedCourses();
+                        }
+                    }
                     break;
                 case 13:
                     if(Courses.is_Empty()){
