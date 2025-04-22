@@ -1,6 +1,7 @@
 public class Course_List {
     Course_Node head;
     Course_Node tail;
+    Course_Node last_added;
     int size;
     //Constructor of the list
     public Course_List(){
@@ -12,14 +13,36 @@ public class Course_List {
     public void addCourse(long ID,String name) {
         if (head == null) {
             head = tail = new Course_Node(ID,name);
+            last_added = head;
         } else {
             head.prev= new Course_Node(ID,name);
+            last_added = head.prev;
             head.prev.next = head;
             head = head.prev;
         }
         this.MergeSort ();
         size++;
     }
+
+
+    //Removes a course from the list
+    public void removeCourse(Course_Node temp) {
+        if (temp == null) {
+            System.out.println("\nThe Course does not exist in the list.");
+        } else {
+            if (temp == head) {
+                head = temp.next;
+            } else if (temp == tail) {
+                tail = temp.prev;
+            } else {
+                temp.next.prev = temp.prev;
+                temp.prev.next = temp.next;
+                size--;
+                System.out.println ("\nThe Course has been successfully deleted.");
+            }
+        }
+    }
+
 
     //Checks if a specified Course existed in a list
     public boolean isExist(long ID){

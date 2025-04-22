@@ -2,6 +2,7 @@ public class Student_List {
     //Class Parameters
     public Student_Node head;
     public Student_Node tail;
+    public Student_Node last_added;
     int size;
 
 
@@ -20,8 +21,10 @@ public class Student_List {
     public void addStudent(long ID,String firstName,int age,double GPA) {             // GPA will be used to be calculated depending on the Student grade in each course
         if (is_Empty ()){
             head = tail = new Student_Node(ID,firstName,age,GPA);
+            last_added = head;
         } else{
             head.prev= new Student_Node(ID,firstName,age,GPA);
+            last_added = head.prev;
             head.prev.next = head;
             head = head.prev;
             MergeSort();
@@ -29,6 +32,28 @@ public class Student_List {
         size++;
     }
 
+    
+    //Removes Student from the list
+    public void removeStudent(Student_Node temp) {
+        if (temp == null) {
+            System.out.println("\nThe student does not exist in the list.");
+        } else {
+            if (temp == head) {
+                head = temp.next;
+            } else if (temp == tail) {
+                tail = temp.prev;
+            } else {
+            temp.next.prev = temp.prev;
+            temp.prev.next = temp.next;
+            size--;
+                System.out.println ("\nThe student has been successfully deleted.");
+            }
+        }
+    }
+
+    
+    
+    
     //Checks if a specified student existed in a list
     public boolean isExist(long ID){
         return this.binarySearch (ID) != null;

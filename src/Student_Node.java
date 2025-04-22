@@ -90,7 +90,15 @@ public class Student_Node {
             System.out.println ();
         }                           //Implement:
     //Display_All_Courses  || Display_Active_Courses
-
+    public void displaySortedCourses() {
+        Course_List temp = new Course_List();
+        Enrollment_Node temp1 = first_course;
+        while(temp1 != null){
+            temp.addCourse(temp1.course.ID,temp1.course.name);
+            temp1 = temp1.next_course;
+        }
+        temp.display();
+    }
 
     //Removes specified Enrollment_Node 
     public void removeEnrollment(long id, Course_List course) {
@@ -112,7 +120,7 @@ public class Student_Node {
                 break;
             
             case 3: 
-                if(!isRegistred(id, course)){
+                if(!isRegistered (id, course)){
                     System.out.println("\nThe student did not register for the course at all.");
                 } else {
 
@@ -140,8 +148,7 @@ public class Student_Node {
 
 
                     }
-                    else if((req.first_student.student.ID == this.ID)&&
-                    !(this.first_course.course.ID == id))
+                    else if(req.first_student.student.ID == this.ID)
                     {
                          if(req.first_student.next_student != null){
                             req.first_student = req.first_student.next_student;
@@ -172,8 +179,7 @@ public class Student_Node {
                         System.out.println("\nThe course enrollment has been successfully deleted.");
 
                     }
-                    else if(!(req.first_student.student.ID == this.ID)&&
-                    (this.first_course.course.ID == id))
+                    else if(this.first_course.course.ID == id)
                     {
                         if(this.first_course.next_course != null){
                             this.first_course= this.first_course.next_course;
@@ -252,8 +258,8 @@ public class Student_Node {
 
     }
 
-    //Checks if student registered a specified course
-    public boolean isRegistred(long id, Course_List course){
+    //Checks if a student registered a specified course
+    public boolean isRegistered(long id, Course_List course){
 
         Course_Node node = course.binarySearch(id);
         Enrollment_Node temp;
@@ -280,10 +286,10 @@ public class Student_Node {
             temp = temp.next_course;
         }
 
-        return (Counter >= 2 && Counter <= 7) ? true : false;
+        return Counter >= 2 && Counter <= 7;
     }
 
-    //Chechs if student registered 7 courses
+    //Checks if a student registered 7 courses
     public boolean isFullOfCourses(){
         int Counter = 0;
         Enrollment_Node temp = first_course;
@@ -293,7 +299,7 @@ public class Student_Node {
             temp = temp.next_course;
         }
 
-        return (Counter == 7) ? true : false; 
+        return Counter == 7;
     }
 
 }

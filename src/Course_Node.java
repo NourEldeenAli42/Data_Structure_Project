@@ -17,13 +17,13 @@ public class Course_Node {
  
     //Put condition to display only active students
     public void display_students() {
-        Enrollment_Node temp = first_student;
-        System.out.println("\nStudents Enrolled in " + this.name + " : ");
-        while(temp!=null){
-            System.out.println(temp.student.name);
-            temp=temp.next_student;
+        Student_List temp = new Student_List();
+        Enrollment_Node temp1 = first_student;
+        while(temp1 != null){
+            temp.addStudent(temp1.student.ID,temp1.student.name,temp1.student.age,temp1.student.GPA);
+            temp1 = temp1.next_student;
         }
-        System.out.println();
+        temp.display();
     }
     
     //Checks if 30 students registered at a specified course;
