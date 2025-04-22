@@ -14,7 +14,11 @@ public class Main{
         String StudentName , CourseName;
         int StudentAge;
         double StudentGPA;
-
+        
+        StackRedo SR = new StackRedo();
+        StackUndo SU = new StackUndo();
+        SU.SetRedo(SR);
+        SR.SetUndo(SU);
 
         do { 
             System.out.println("\n\t\t\tWelcome to University Course Registration !");
@@ -173,7 +177,7 @@ public class Main{
                                     System.out.println("\nThe course is not exist.\n");
                                 }else{
 
-                                    if (Students.binarySearch(StudentID).isRegistred(CourseID, Courses)) {
+                                    if (Students.binarySearch(StudentID).isRegistered(CourseID, Courses)) {
                                         System.out.println("\nStudent has already enrolled this course.\n");
                                     }else if(Students.binarySearch(StudentID).isFullOfCourses()){
                                         System.out.println("\nThe student registered for the maximum number of courses.\n");
@@ -315,7 +319,7 @@ public class Main{
                     break;
                 case 0:
 
-                    System.out.println("\n\t\t\tExiting The System ;)XD\n");
+                    System.out.println("\n\t\t\tExiting The System ;)\n");
 
                     break;
                 default:
