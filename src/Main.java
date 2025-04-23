@@ -289,7 +289,7 @@ public class Main{
                                     }else{
                                         Students.binarySearch(StudentID).enroll(CourseID,Courses);
                                         SU.Push(Students.binarySearch(StudentID).last_course);
-                
+                                        SU.removeTop ();
                                         System.out.println("\nThe course has been successfully enrolled.\n");
                                     }
                                 }

@@ -17,9 +17,11 @@ class StackUndo{
         if(top == null){
             top = new StackNode(EN);
         }else{
-            StackNode nNode = new StackNode(EN,top);
-            top = nNode;
+            top = new StackNode(EN,top);
         }
+    }
+
+    public void removeTop(){
         SR.top = null;
     }
 
