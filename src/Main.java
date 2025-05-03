@@ -7,7 +7,7 @@ public class Main{
 
         Student_List Students = new Student_List();
 
-        Students.addStudent(2401244543L,"Nour Eldeen Ali",19,3.9);
+        Students.addStudent(1L,"Nour Eldeen Ali",19,5);
         Students.search (2401244543L).enroll (77887,Courses);
         Students.search (2401244543L).enroll (77890,Courses);
         Students.search (2401244543L).enroll (7791,Courses);
