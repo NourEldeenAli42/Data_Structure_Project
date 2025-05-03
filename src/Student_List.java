@@ -107,7 +107,7 @@ public class Student_List {
             return first;
         }
         if (first.ID < second.ID) {
-            first.next = merge(first.next, second);
+            first.next = merge(first.next, second);   // Recursive call to merge the next node of the first list with the second list
             if (first.next != null) {
                 first.next.prev = first;
             }

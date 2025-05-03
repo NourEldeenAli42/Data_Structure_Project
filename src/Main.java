@@ -124,7 +124,7 @@ public class Main{
                     } else if(temp.first_student != null){
                         System.out.println ("The course has enrolled students.\n");
                         System.out.println ("Do you want to remove the course ? (1 / 0) : \n");
-                        System.out.println ("\"This will delete all the enrollments that the course.\"\n");
+                        System.out.println ("\"This will delete all the enrollments in the course.\"\n");
                         int remove = input.nextInt();
                         if(remove == 1){
                             Enrollment_Node temp1 = temp.first_student;
@@ -271,13 +271,13 @@ public class Main{
                             StudentID = input.nextLong();
                             if(!Students.isExist(StudentID)){
 
-                                System.out.println("\nThe Student is not exist.\n");
+                                System.out.println("\nThe Student doesn't exist.\n");
                             }else{
                                 System.out.println("Enter Course's ID To Enroll : ");
                                 CourseID = input.nextLong();
 
                                 if(!Courses.isExist(CourseID)){
-                                    System.out.println("\nThe course is not exist.\n");
+                                    System.out.println("\nThe course doesn't exist.\n");
                                 }else{
 
                                     if (Students.binarySearch(StudentID).isRegistered(CourseID, Courses)) {
@@ -314,7 +314,7 @@ public class Main{
                         StudentID = input.nextLong();
                         if(!Students.isExist(StudentID)){
 
-                        System.out.println("\nThe student is not exist.\n");
+                        System.out.println("\nThe student doesn't exist.\n");
 
                     }else{
 
@@ -322,7 +322,7 @@ public class Main{
                         CourseID = input.nextLong();
                         
                         if(!Courses.isExist(CourseID)){
-                            System.out.println("\nThe course is not exist.\n");
+                            System.out.println("\nThe course doesn't exist.\n");
                         }else{
                             Students.binarySearch (StudentID).removeEnrollment(CourseID, Courses);
                         }

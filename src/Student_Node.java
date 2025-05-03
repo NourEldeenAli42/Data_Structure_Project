@@ -117,7 +117,7 @@ public class Student_Node {
                 var = 3;
         }
         switch (var) {
-           
+        
             case 1: 
             case 2: 
                 System.out.println("\nThe student did not register for the course at all.");
@@ -154,7 +154,7 @@ public class Student_Node {
                     }
                     else if(req.first_student.student.ID == this.ID)
                     {
-                         if(req.first_student.next_student != null){
+                        if(req.first_student.next_student != null){
                             req.first_student = req.first_student.next_student;
                             req.first_student.next_student = null;
                         }
