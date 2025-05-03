@@ -46,15 +46,4 @@ class StackUndo{
             System.out.println("Nothing to Undo");
         }
     }
-
-    public void display(){
-        StackNode temp = top;
-        while(temp !=null){
-            System.out.println("Student Name: " + temp.EN.student.name + " // Course Name: " + temp.EN.course.name );
-            System.out.println("prev "+temp.EN.prev_course+" "+ temp.EN.prev_student);
-            System.out.println("next "+temp.EN.next_course+" "+ temp.EN.next_student);
-            temp = temp.next;
-        }
-    }
-
 }

@@ -1,5 +1,3 @@
-
-
 public class Student_Node {
 
     //Class Data Fields
@@ -38,6 +36,8 @@ public class Student_Node {
         }
         Enrollment_Node newNode = new Enrollment_Node ();
         switch (var) {
+            // The case where the student doesn't have any registered courses
+            // and the course doesn't have any enrolled students
             case 0: {
                 this.first_course = newNode;
                 this.last_course = newNode;
@@ -47,6 +47,8 @@ public class Student_Node {
                 newNode.course = req;
                 break;
             }
+            // The case where the student doesn't have any registered courses
+            // but the course has enrolled students
             case 1: {
                 newNode.prev_student = req.last_student;
                 this.first_course = newNode;
@@ -57,6 +59,8 @@ public class Student_Node {
                 newNode.course=req;
                 break;
             }
+            // The case where the student has registered courses
+            // but the course doesn't have any enrolled students
             case 2: {
                 newNode.prev_course = this.last_course;
                 req.first_student = newNode;
@@ -67,6 +71,8 @@ public class Student_Node {
                 newNode.student = this;
                 break;
             }
+            // The case where the student has registered courses
+            // and the course has enrolled students
             case 3: {
                 newNode.prev_course = this.last_course;
                 newNode.prev_student = req.last_student;
@@ -92,8 +98,7 @@ public class Student_Node {
                 temp = temp.next_course;
             }
             System.out.println ();
-        }                           //Implement:
-    //Display_All_Courses  || Display_Active_Courses
+        }
     public void displaySortedCourses() {
         Course_List temp = new Course_List();
         Enrollment_Node temp1 = first_course;
@@ -109,7 +114,7 @@ public class Student_Node {
         int var;
         Course_Node req = course.binarySearch (id);
         if (first_course == null) {
-                var = 1;
+            var = 1;
         } else {
             if (req.first_student == null) {
                 var = 2;
@@ -117,24 +122,23 @@ public class Student_Node {
                 var = 3;
         }
         switch (var) {
-        
-            case 1: 
-            case 2: 
+
+            case 1:
+            case 2:
                 System.out.println("\nThe student did not register for the course at all.");
                 break;
-            
-            case 3: 
-                if(!isRegistered (id, course)){
+
+            case 3:
+                if(!isRegistered(id, course)){
                     System.out.println("\nThe student did not register for the course at all.");
                 } else {
 
-                    if((req.first_student.student.ID == this.ID) && 
-                    (this.first_course.course.ID == id))
+                    if((req.first_student.student.ID == this.ID) &&
+                            (this.first_course.course.ID == id))
                     {
 
                         if(this.first_course.next_course != null){
                             this.first_course= this.first_course.next_course;
-                            this.first_course.next_course = null;
                         }
                         else{
                             this.first_course= null;
@@ -142,7 +146,6 @@ public class Student_Node {
 
                         if(req.first_student.next_student != null){
                             req.first_student = req.first_student.next_student;
-                            req.first_student.next_student = null;
                         }
                         else{
                             req.first_student = null;
@@ -152,11 +155,11 @@ public class Student_Node {
 
 
                     }
-                    else if(req.first_student.student.ID == this.ID)
+                    else if((req.first_student.student.ID == this.ID)&&
+                            !(this.first_course.course.ID == id))
                     {
                         if(req.first_student.next_student != null){
                             req.first_student = req.first_student.next_student;
-                            req.first_student.next_student = null;
                         }
                         else{
                             req.first_student = null;
@@ -183,11 +186,12 @@ public class Student_Node {
                         System.out.println("\nThe course enrollment has been successfully deleted.");
 
                     }
-                    else if(this.first_course.course.ID == id)
+                    else if(!(req.first_student.student.ID == this.ID)&&
+                            (this.first_course.course.ID == id))
                     {
                         if(this.first_course.next_course != null){
                             this.first_course= this.first_course.next_course;
-                            this.first_course.next_course = null;
+
                         }
                         else{
                             this.first_course= null;
@@ -207,7 +211,7 @@ public class Student_Node {
                         if(temp.next_student != null){
                             prev.next_student = temp.next_student;
                         } else {
-                            
+
                             prev.next_student= null;
                         }
 
@@ -248,7 +252,7 @@ public class Student_Node {
                         if(temp2.next_student != null){
                             prev2.next_student = temp2.next_student;
                         } else {
-                            
+
                             prev2.next_student= null;
                         }
 
@@ -257,7 +261,7 @@ public class Student_Node {
                     }
                 }
                 break;
-            
+
         }
 
     }

@@ -14,8 +14,8 @@ public class Enrollment_Node {
 
 
     //Class Constructor
-    public Enrollment_Node(){                   //Status Dictionary to be done
-        this.Status=1;                          //1- Active  ----  0-Inactive
+    public Enrollment_Node(){
+        this.Status=1;
         this.grade='O';
         this.next_student=null;
         this.next_course=null;

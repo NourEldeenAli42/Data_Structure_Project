@@ -40,6 +40,7 @@ public class Main{
             System.out.println("15-Undo Last Action");
             System.out.println("16-Redo Last Action");
             System.out.println("0-Exit\n");
+            System.out.println ( "Enter your choice: ");
 
             Choice = input.nextInt();
             input.nextLine();
@@ -482,10 +483,6 @@ public class Main{
 
                     break;
             }
-            System.out.println("Undo Stack : ");
-            SU.display();
-            System.out.println("Redo Stack : ");
-            SR.display();
         } while(Choice != 0);
         
     }
